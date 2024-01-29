@@ -83,9 +83,8 @@ colorscheme "challenger-deep"
 call plug#begin()
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'Tetralux/odin.vim'
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
+    Plug 'nvim-telescope/telescope.nvim'
     Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
     Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/cmp-nvim-lsp'
@@ -95,7 +94,13 @@ call plug#begin()
     Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-vsnip'
     Plug 'hrsh7th/vim-vsnip'
+    Plug 'sheerun/vim-polyglot'
 call plug#end()
+
+" Vimwiki
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': 'md'}]
+let g:vimwiki_global_ext = 0
 
 " VimAirline
 let g:airline_theme='simple'

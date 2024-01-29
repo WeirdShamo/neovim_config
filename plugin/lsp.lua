@@ -1,5 +1,15 @@
 local lspconfig = require('lspconfig')
 lspconfig.ols.setup({})
+lspconfig.gopls.setup({})
+lspconfig.zls.setup({})
+lspconfig.pyright.setup {}
+lspconfig.tsserver.setup {}
+lspconfig.rust_analyzer.setup {
+  -- Server-specific settings. See `:help lspconfig-setup`
+  settings = {
+    ['rust-analyzer'] = {},
+  },
+}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -34,7 +44,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set('n', '<space>f', function()
-      vim.lsp.buf.format { async = true }
+      vim.lsp.buf.format { async = false,  filter = function(client) return client.name ~= "odinfmt" end}
     end, opts)
   end,
 })
