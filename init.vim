@@ -1,7 +1,6 @@
 " CONFIG BASE
 " enable mouse support "
 set mouse=a
-
 " set cursor as block
 set guicursor=n-v-c:block-Cursor
 
@@ -52,7 +51,7 @@ if !has('gui_running')
 	set t_Co=256
 endif
 " enable true colors support "
-set termguicolors
+"set termguicolors
 " Vim colorscheme "
 colorscheme "challenger-deep"
 
@@ -85,16 +84,19 @@ call plug#begin()
     Plug 'vim-airline/vim-airline-themes'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
-    Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-path'
-    Plug 'hrsh7th/cmp-cmdline'
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'hrsh7th/cmp-vsnip'
-    Plug 'hrsh7th/vim-vsnip'
-    Plug 'sheerun/vim-polyglot'
+    "Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+    "Plug 'neovim/nvim-lspconfig'
+    "Plug 'hrsh7th/cmp-nvim-lsp'
+    "Plug 'hrsh7th/cmp-buffer'
+    "Plug 'hrsh7th/cmp-path'
+    "Plug 'hrsh7th/cmp-cmdline'
+    "Plug 'hrsh7th/nvim-cmp'
+    "Plug 'hrsh7th/cmp-vsnip'
+    "Plug 'hrsh7th/vim-vsnip'
+    "Plug 'sheerun/vim-polyglot'
+    Plug 'm4xshen/autoclose.nvim'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 " Vimwiki
