@@ -1,3 +1,56 @@
+--  Plugins
+--  Lazy bootstrap (install)
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Import Lazy
+require("lazy").setup({
+    "vim-airline/vim-airline",
+    "vim-airline/vim-airline-themes",
+    {"neoclide/coc.nvim", branch="release"},
+    "nvim-lua/plenary.nvim",
+    "nvim-telescope/telescope.nvim",
+    "m4xshen/autoclose.nvim",
+    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+    { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...}
+ })
+
+-- Set leader key
+vim.cmd("let mapleader = \" \"")
+
+
+-- enable color themes
+vim.cmd("set t_Co=256")
+-- Vim colorscheme
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])
+-- enable true colors support
+-- vim.cmd("set termguicolors")
+vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+
+
+-- Plugin settings 
+-- vim airline
+--vim.cmd("let g:airline_theme='simple'")
+-- Buffers
+vim.cmd("map <leader>n :bnext<cr>")
+vim.cmd("map <leader>p :bprevious<cr>")
+vim.cmd("map <leader>d :bdelete<cr>")
+-- Telescope
+vim.cmd("nnoremap <leader>ff <cmd>Telescope find_files<cr>")
+vim.cmd("nnoremap <leader>fg <cmd>Telescope live_grep<cr>")
+vim.cmd("nnoremap <leader>fb <cmd>Telescope buffers<cr>")
+vim.cmd("nnoremap <leader>fh <cmd>Telescope help_tags<cr>")
 -- CONFIG BASE
 -- enable mouse support
 vim.cmd("set mouse=a")
@@ -47,54 +100,4 @@ vim.cmd("autocmd BufWritePre *.f90 :%s/\\s\\+$//e")
 vim.cmd("autocmd BufWritePre *.f95 :%s/\\s\\+$//e")
 vim.cmd("autocmd BufWritePre *.for :%s/\\s\\+$//e")
 
--- enable color themes
-vim.cmd("set t_Co=256")
 
--- enable true colors support
-vim.cmd("set termguicolors")
--- Vim colorscheme
--- vim.cmd("colorscheme \"challenger-deep\")
-vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
-
--- Set leader key
-vim.cmd("let mapleader = \" \"")
-
--- Plugins
---  Lazy bootstrap (install)
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
--- Import Lazy
-require("lazy").setup({
-    "vim-airline/vim-airline",
-    "vim-airline/vim-airline-themes",
-    {"neoclide/coc.nvim", branch="release"},
-    "nvim-lua/plenary.nvim",
-    "nvim-telescope/telescope.nvim",
-    "m4xshen/autoclose.nvim",
-    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"}
-})
-
-
--- Plugin settings 
--- vim airline
-vim.cmd("let g:airline_theme='simple'")
--- Buffers
-vim.cmd("map <leader>n :bnext<cr>")
-vim.cmd("map <leader>p :bprevious<cr>")
-vim.cmd("map <leader>d :bdelete<cr>")
--- Telescope
-vim.cmd("nnoremap <leader>ff <cmd>Telescope find_files<cr>")
-vim.cmd("nnoremap <leader>fg <cmd>Telescope live_grep<cr>")
-vim.cmd("nnoremap <leader>fb <cmd>Telescope buffers<cr>")
-vim.cmd("nnoremap <leader>fh <cmd>Telescope help_tags<cr>")
