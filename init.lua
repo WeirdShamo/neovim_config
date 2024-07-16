@@ -1,7 +1,10 @@
 require('config.core')
 require('config.lazy')
 require('config.colorscheme')
+require('config.treesitter')
 require('config.lualine')
 require('config.autoclose')
 require('config.cmp')
 require('config.mason')
+require('config.oil')
+
