@@ -1,4 +1,4 @@
 return {
   -- add gruvbox
-  { "ellisonleao/gruvbox.nvim" },
+  { "challenger-deep-theme/vim" },
 }

@@ -7,4 +7,5 @@ require('config.autoclose')
 require('config.cmp')
 require('config.mason')
 require('config.oil')
+require('config.transparent')
 
